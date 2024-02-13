@@ -22,8 +22,28 @@ secrets:
 
 volumes:
   public-files:
-    mountPath: /workspace/web/sites/default/files
-    size: 2Gi
+    mount_path: /workspace/web/sites/default/files
+    size: 2
   private-files:
-    mountPath: /workspace/web/sites/default/pvt
-    size: 2Gi
+    mount_path: /workspace/web/sites/default/pvt
+    size: 2
+
+init:
+  build_css:
+    resources:
+      cpu: "1000m"
+      memory: "1Gi"
+  migrate:
+    resources:
+      cpu: "500m"
+      memory: "512Mi"
+
+workers:
+  celery:
+    resources:
+      cpu: "1000m"
+      memory: "1Gi"
+  celery-beat:
+    resources:
+      cpu: "500m"
+      memory: "512Mi"
