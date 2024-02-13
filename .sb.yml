@@ -1,6 +1,8 @@
+hello: world
+
 env_vars:
   FOO: bar
-  TEST: 1
+  TEST
 
 build_vars:
   BP_NODE_RUN_SCRIPTS: build
