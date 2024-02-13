@@ -19,3 +19,11 @@ build_vars:
 secrets:
   - JWT_TOKEN
   - MAIL_API_KEY
+
+volumes:
+  public-files:
+    mountPath: /workspace/web/sites/default/files
+    size: 2Gi
+  private-files:
+    mountPath: /workspace/web/sites/default/pvt
+    size: 2Gi
