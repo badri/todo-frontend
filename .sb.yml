@@ -1,6 +1,6 @@
 env_vars:
   FOO: bar
-  TEST: 1
+  TEST: "1"
 
 build_vars:
   BP_NODE_RUN_SCRIPTS: build
