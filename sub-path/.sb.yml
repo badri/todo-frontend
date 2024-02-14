@@ -1,0 +1,49 @@
+env_vars:
+  FOO: bar
+  TEST: "1"
+
+build_vars:
+  BP_NODE_RUN_SCRIPTS: build
+  BP_WEB_SERVER: nginx
+  BP_WEB_SERVER_ROOT: build
+  BP_WEB_SERVER_ENABLE_PUSH_STATE: "true"
+
+# services:
+#   db1:
+#     type: mysql
+#     attach_as: separate_variables
+#   db2:
+#     type: mysql
+#     attach_as: url
+
+secrets:
+  - JWT_TOKEN
+  - MAIL_API_KEY
+
+volumes:
+  public-files:
+    mount_path: /workspace/web/sites/default/files
+    size: 2
+  private-files:
+    mount_path: /workspace/web/sites/default/pvt
+    size: 2
+
+init:
+  build_css:
+    resources:
+      cpu: "1000m"
+      memory: "1Gi"
+  migrate:
+    resources:
+      cpu: "500m"
+      memory: "512Mi"
+
+workers:
+  celery:
+    resources:
+      cpu: "1000m"
+      memory: "1Gi"
+  celery-beat:
+    resources:
+      cpu: "500m"
+      memory: "512Mi"
